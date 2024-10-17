@@ -1,0 +1,17 @@
+spring.application.name=SpringSQSRedisElastiCache
+sqs.topic.name=user-cache-details
+cloud.aws.credentials.instanceProfile=true
+cloud.aws.region.use-default-aws-region-chain=true
+cloud.aws.stack.auto=false
+spring.main.allow-bean-definition-overriding=true
+
+spring.cache.type=redis
+
+## put here the name of the Redis db
+redisdb=
+
+## put here the ElastiCache endpoint after you create it
+spring.data.redis.host=
+
+spring.data.redis.port=6379
+
