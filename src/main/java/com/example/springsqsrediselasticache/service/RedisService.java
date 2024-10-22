@@ -11,7 +11,8 @@ import java.util.Map;
 public class RedisService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
     public void save(Message message){
         userRepository.save(message);
     }

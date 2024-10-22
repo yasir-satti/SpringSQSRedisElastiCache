@@ -1,6 +1,7 @@
 package com.example.springsqsrediselasticache.config;
 
 import com.example.springsqsrediselasticache.model.Message;
+import com.example.springsqsrediselasticache.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +13,6 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
 @Configuration
-//@EnableElastiCache({@CacheClusterConfig(name = "${redisdb}")})
 public class RedisConfig {
 
     @Value("${spring.data.redis.host}")
@@ -39,5 +39,11 @@ public class RedisConfig {
         return RedisCacheManager.builder(jedisConnectionFactory)
                 .cacheDefaults(RedisCacheConfiguration.defaultCacheConfig())
                 .build();
+    }
+
+    @Bean
+    public UserRepository userRepository(RedisTemplate<String, Message> RedisTemplate){
+        UserRepository userRepository = new UserRepository(RedisTemplate);
+        return userRepository;
     }
 }

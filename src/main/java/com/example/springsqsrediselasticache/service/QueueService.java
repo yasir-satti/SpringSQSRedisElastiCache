@@ -8,9 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 import com.example.springsqsrediselasticache.model.Message;
+import org.springframework.stereotype.Service;
 
+@Service
 public class QueueService {
-//    private static final String QUEUE_NAME = "test_queue" + new Date().getTime();
 
     RedisService redisService = new RedisService();
 

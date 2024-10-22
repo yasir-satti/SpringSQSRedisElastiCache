@@ -15,11 +15,10 @@ import java.util.Map;
 @RequestMapping("/")
 public class Controller {
 
-    QueueService queueService = new QueueService();
-
     @Autowired
     RedisService redisService;
 
+    QueueService queueService = new QueueService();
 
     @GetMapping("/queue/create")
     public String createQueue() {
