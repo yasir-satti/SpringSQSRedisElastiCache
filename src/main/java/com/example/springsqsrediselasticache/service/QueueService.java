@@ -1,23 +1,30 @@
 package com.example.springsqsrediselasticache.service;
 
 import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.amazonaws.services.sqs.model.*;
 
 import java.util.Date;
 import java.util.List;
 
 import com.example.springsqsrediselasticache.model.Message;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class QueueService {
 
-    RedisService redisService = new RedisService();
+    private final RedisService redisService;
 
-    AmazonSQS sqs = AmazonSQSClientBuilder.defaultClient();
+    private final AmazonSQS sqs;
 
-    public String createSQS (){
+    @Autowired
+    public QueueService(AmazonSQS sqs, RedisService redisService) {
+        this.sqs = sqs;
+        this.redisService = redisService;
+    }
+
+    public String createSQS() {
         String QUEUE_NAME = "test_queue" + new Date().getTime();
         try {
             sqs.createQueue(QUEUE_NAME);
@@ -29,7 +36,7 @@ public class QueueService {
         return  QUEUE_NAME;
     }
 
-    public ListQueuesResult listQueues(){
+    public ListQueuesResult listQueues() {
         ListQueuesResult queueList = sqs.listQueues();
         System.out.println("Your SQS Queue URLs:");
         for (String url: queueList.getQueueUrls()) {
@@ -38,7 +45,7 @@ public class QueueService {
         return queueList;
     }
 
-    public void sendQueueMSG(Message message, String queueUrl){
+    public void sendQueueMSG(Message message, String queueUrl) {
         SendMessageRequest request = new SendMessageRequest()
                 .withQueueUrl(queueUrl)
                         .withMessageBody(message.getContent())
