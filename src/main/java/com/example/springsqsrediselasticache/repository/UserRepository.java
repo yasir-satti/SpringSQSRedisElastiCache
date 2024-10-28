@@ -1,17 +1,19 @@
 package com.example.springsqsrediselasticache.repository;
 
 import com.example.springsqsrediselasticache.model.Message;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 
+@Repository
 public class UserRepository{
 
-    private HashOperations hashOperations;
+    private final HashOperations hashOperations;
 
-    public UserRepository(RedisTemplate<String, Message> redisTemplate){
+    public UserRepository(@Autowired RedisTemplate redisTemplate){
         this.hashOperations = redisTemplate.opsForHash();
     }
 
