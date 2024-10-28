@@ -1,0 +1,32 @@
+{
+    "ServerlessCaches": [
+        {
+            "ServerlessCacheName": "redis-sqs-messages",
+            "Description": " ",
+            "CreateTime": "2024-10-17T13:35:34.705000+00:00",
+            "Status": "available",
+            "Engine": "redis",
+            "MajorEngineVersion": "7",
+            "FullEngineVersion": "7.1",
+            "SecurityGroupIds": [
+                "sg-064ceadb2fdb1b58f"
+            ],
+            "Endpoint": {
+                "Address": "redis-sqs-messages-htxhof.serverless.euw2.cache.amazonaws.com",
+                "Port": 6379
+            },
+            "ReaderEndpoint": {
+                "Address": "redis-sqs-messages-htxhof.serverless.euw2.cache.amazonaws.com",
+                "Port": 6380
+            },
+            "ARN": "arn:aws:elasticache:eu-west-2:281408736314:serverlesscache:redis-sqs-messages",
+            "SubnetIds": [
+                "subnet-038f9520228d8faa4",
+                "subnet-0b49672f2977ea149",
+                "subnet-015a2e033d0c2f3eb"
+            ],
+            "SnapshotRetentionLimit": 0,
+            "DailySnapshotTime": "02:30"
+        }
+    ]
+}
