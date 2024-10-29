@@ -1,9 +1,12 @@
 package com.example.springsqsrediselasticache.model;
 
+import lombok.Builder;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Builder
 public class Message implements Serializable {
     @Serial
     private static final long serialVersionUID = 5L;
