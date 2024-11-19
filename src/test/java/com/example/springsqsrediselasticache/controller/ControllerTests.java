@@ -25,7 +25,7 @@ public class ControllerTests {
     private QueueService queueService;
 
     @Test
-    void shouldCreateNewQueue() {
+    void shouldCreateNewQueue() throws Exception {
 
         /*
         //TODO
@@ -35,6 +35,10 @@ public class ControllerTests {
         When i try to create new SQS queue
         Then a new queue is created, and i get back the name of the queue
         */
+
+        mockMvc.perform(get("/queue/create")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated());
     }
 
     @Test
