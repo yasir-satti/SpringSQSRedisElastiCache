@@ -3,7 +3,6 @@ package com.example.springsqsrediselasticache.service;
 import com.example.springsqsrediselasticache.model.Message;
 import com.example.springsqsrediselasticache.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

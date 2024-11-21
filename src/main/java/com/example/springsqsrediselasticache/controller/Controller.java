@@ -5,7 +5,6 @@ import com.example.springsqsrediselasticache.model.Message;
 import com.example.springsqsrediselasticache.service.QueueService;
 import com.example.springsqsrediselasticache.service.RedisService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

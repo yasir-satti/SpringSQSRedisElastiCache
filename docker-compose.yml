@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes:
+      - cache:/data
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack}"
+    image: localstack/localstack
+    hostname: localstack
+    networks:
+      - test-net
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,sqs,cloudformation,iam,cloudwatch,clasticache
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - LAMBDA_EXECUTOR=docker-reuse
+      - LAMBDA_REMOTE_DOCKER=false
+      - LAMBDA_REMOVE_CONTAINERS=true
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOST_TMP_FOLDER=${TMPDIR}
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+networks:
+  test-net:
+    external: false
+    driver: bridge
+    name: test-net
+volumes:
+  cache:
+    driver: local

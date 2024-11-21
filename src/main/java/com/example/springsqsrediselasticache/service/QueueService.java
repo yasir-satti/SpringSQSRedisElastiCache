@@ -1,14 +1,12 @@
 package com.example.springsqsrediselasticache.service;
 
 import com.amazonaws.services.sqs.AmazonSQS;
-import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.amazonaws.services.sqs.model.*;
 
 import java.util.Date;
 import java.util.List;
 
 import com.example.springsqsrediselasticache.model.Message;
-import com.example.springsqsrediselasticache.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
